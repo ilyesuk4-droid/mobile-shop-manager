@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
-  Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts, ClientOnly, type ErrorComponentProps,
+  Link, createRootRouteWithContext, useRouter, HeadContent, Scripts, ClientOnly, type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
@@ -86,7 +86,6 @@ function RootComponent() {
           </PrintProvider>
         </I18nProvider>
       </ClientOnly>
-      {false && <Outlet />}
     </QueryClientProvider>
   );
 }
