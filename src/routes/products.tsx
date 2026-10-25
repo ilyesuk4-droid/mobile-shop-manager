@@ -41,7 +41,7 @@ function Products() {
   async function importFile(file: File) {
     const XLSX = await import("xlsx");
     const wb = XLSX.read(await file.arrayBuffer());
-    const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets[wb.SheetNames[0]]);
+    const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets[wb.SheetNames[0] ?? ""]!);
     const pick = (r: Record<string, unknown>, keys: string[]) => {
       for (const k of Object.keys(r)) if (keys.includes(k.trim().toLowerCase())) return r[k];
       return undefined;

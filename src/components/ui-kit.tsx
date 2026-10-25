@@ -1,4 +1,4 @@
-import { useEffect, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes } from "react";
+import { useEffect, type ButtonHTMLAttributes, type ComponentProps, type ReactNode, type SelectHTMLAttributes } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +15,7 @@ const sizes = { sm: "h-9 px-3 text-sm", md: "h-11 px-4", lg: "h-14 px-6 text-lg"
 export function Button({ variant = "primary", size = "md", className, ...p }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: keyof typeof btn; size?: keyof typeof sizes }) {
   return <button {...p} className={cn("inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition disabled:opacity-50 disabled:pointer-events-none", btn[variant], sizes[size], className)} />;
 }
-export function Input({ className, ...p }: InputHTMLAttributes<HTMLInputElement>) {
+export function Input({ className, ...p }: ComponentProps<"input">) {
   return <input {...p} className={cn("h-11 w-full rounded-lg border border-input bg-card px-3 outline-none focus:ring-2 focus:ring-ring", className)} />;
 }
 export function Select({ className, ...p }: SelectHTMLAttributes<HTMLSelectElement>) {
