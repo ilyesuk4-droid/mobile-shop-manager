@@ -1,8 +1,8 @@
 export interface Product {
-  id?: number;
+  id?: number | undefined;
   name: string;
   barcode: string;
-  categoryId?: number;
+  categoryId?: number | undefined;
   brand: string;
   purchasePrice: number;
   retailPrice: number;
@@ -10,12 +10,12 @@ export interface Product {
   stock: number;
   minStock: number;
   notes: string;
-  image?: string;
+  image?: string | undefined;
   createdAt: number;
 }
-export interface Category { id?: number; name: string }
-export interface Customer { id?: number; name: string; phone: string; balance: number; createdAt: number }
-export interface CustomerPayment { id?: number; customerId: number; amount: number; date: number; note: string }
+export interface Category { id?: number | undefined; name: string }
+export interface Customer { id?: number | undefined; name: string; phone: string; balance: number; createdAt: number }
+export interface CustomerPayment { id?: number | undefined; customerId: number; amount: number; date: number; note: string }
 export type PriceType = "retail" | "wholesale";
 export interface SaleLine {
   productId: number;
@@ -27,7 +27,7 @@ export interface SaleLine {
 }
 export type PaymentStatus = "paid" | "partial" | "credit";
 export interface Sale {
-  id?: number;
+  id?: number | undefined;
   date: number;
   items: SaleLine[];
   subtotal: number;
@@ -36,23 +36,23 @@ export interface Sale {
   paid: number;
   remaining: number;
   status: PaymentStatus;
-  customerId?: number;
-  customerName?: string;
+  customerId?: number | undefined;
+  customerName?: string | undefined;
 }
-export interface Supplier { id?: number; name: string; phone: string }
+export interface Supplier { id?: number | undefined; name: string; phone: string }
 export interface PurchaseLine { productId: number; name: string; qty: number; purchasePrice: number }
-export interface Purchase { id?: number; date: number; supplierId?: number; supplierName?: string; items: PurchaseLine[]; total: number }
+export interface Purchase { id?: number | undefined; date: number; supplierId?: number | undefined; supplierName?: string | undefined; items: PurchaseLine[]; total: number }
 export type MovementType = "sale" | "purchase" | "adjust";
-export interface Movement { id?: number; date: number; productId: number; productName: string; type: MovementType; qty: number; note: string }
-export interface Expense { id?: number; date: number; category: string; amount: number; note: string }
+export interface Movement { id?: number | undefined; date: number; productId: number; productName: string; type: MovementType; qty: number; note: string }
+export interface Expense { id?: number | undefined; date: number; category: string; amount: number; note: string }
 export interface Settings {
   key: "main";
   shopName: string;
-  logo?: string;
+  logo?: string | undefined;
   phone: string;
   address: string;
   receiptFooter: string;
   paperWidth: 58 | 80;
   language: "ar" | "fr";
-  lastBackup?: number;
+  lastBackup?: number | undefined;
 }

@@ -30,7 +30,7 @@ export const productsRepo = {
     });
   },
   async setBarcode(id: number, barcode: string) { await db.products.update(id, { barcode }); },
-  async bulkImport(rows: Array<Omit<Product, "id" | "createdAt" | "categoryId"> & { categoryName?: string }>) {
+  async bulkImport(rows: Array<Omit<Product, "id" | "createdAt" | "categoryId"> & { categoryName?: string | undefined }>) {
     let count = 0;
     await db.transaction("rw", db.products, db.categories, async () => {
       const cats = await db.categories.toArray();
@@ -84,7 +84,7 @@ export interface NewSale {
   discount: number;
   paid: number;
   status: PaymentStatus;
-  customerId?: number;
+  customerId?: number | undefined;
 }
 export const salesRepo = {
   list: (from: number, to: number) => db.sales.where("date").between(from, to, true, true).reverse().toArray(),

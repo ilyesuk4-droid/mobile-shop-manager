@@ -69,7 +69,7 @@ function POS() {
     if (!q) return;
     const p = await productsRepo.getByBarcode(q);
     if (p) return add(p);
-    if (suggestions.length === 1 || (suggestions.length && suggestions[0].name.toLowerCase() === q.toLowerCase())) return add(suggestions[0]);
+    if (suggestions.length === 1 || (suggestions[0] && suggestions[0].name.toLowerCase() === q.toLowerCase())) return add(suggestions[0]!);
     if (!suggestions.length) { toast.error(t("notFound")); setQuery(""); }
   }
   const update = (i: number, patch: Partial<CartLine>) => setCart((c) => c.map((l, j) => (j === i ? { ...l, ...patch } : l)));
